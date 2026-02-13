@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>San Valentín</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    background: white;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+h1 {
+    font-size: 64px;
+    margin-top: 120px;
+    color: black;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+button {
+    font-size: 28px;
+    padding: 18px 45px;
+    margin: 25px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    z-index: 2;
+    position: relative;
+}
+
+#yes {
+    background: #c40000;
+    color: white;
+}
+
+#no {
+    background: black;
+    color: white;
+    position: absolute;
+}
+
+.heart {
+    position: absolute;
+    font-size: 90px;
+    animation: aparecer 4s infinite;
+}
+
+@keyframes aparecer {
+    0% {opacity: 0;}
+    30% {opacity: 0.6;}
+    70% {opacity: 0.6;}
+    100% {opacity: 0;}
+}
+</style>
+
+<script>
+function moveNo() {
+    document.getElementById("no").style.left =
+        Math.random() * (window.innerWidth - 140) + "px";
+    document.getElementById("no").style.top =
+        Math.random() * (window.innerHeight - 140) + "px";
+}
+
+function goLove() {
+    window.location.href = "amor.html";
+}
+
+// corazones que aparecen y desaparecen
+setInterval(() => {
+    let h = document.createElement("div");
+    h.innerHTML = "❤️";
+    h.className = "heart";
+    h.style.left = Math.random()*100 + "%";
+    h.style.top = Math.random()*100 + "%";
+    h.style.fontSize = (60 + Math.random()*120) + "px";
+    h.style.color = `rgb(${160 + Math.random()*90},0,0)`;
+    document.body.appendChild(h);
+
+    setTimeout(() => h.remove(), 4000);
+}, 300);
+</script>
+</head>
+
+<body>
+
+<audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<h1>
+¿Quieres ser mi San Valentín <br>
+este sábado 14 de febrero?
+</h1>
+
+<button id="yes" onclick="goLove()">SÍ ❤️</button>
+<button id="no" onmouseover="moveNo()">NO 💔</button>
+
+</body>
+</html>
